@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Ghuy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Ghuy.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 30, 1, 30 )
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="SphereShape" id=5]
+
+[sub_resource type="SphereMesh" id=6]
+
+[node name="Level" type="Spatial"]
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79429, 3.36667, 15.1737 )
+fov = 60.0
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+transform = Transform( 30, 0, 0, 0, 1, 0, 0, 0, 30, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Ball1" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.7198, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ball1"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ball1"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Ball2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.94331, 12.7198, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ball2"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ball2"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Ball3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.86419, 16.1232, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ball3"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ball3"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Ghuy" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 0.0640447, -0.997947, 0, 0.997947, 0.0640447, 8.21038, 1.8858, 10.9218 )
+script = ExtResource( 2 )
